@@ -15,7 +15,7 @@
             <span class="cs-topper">{{ sbsr_right_topper }}</span>
             <h2 class="cs-title">{{ sbsr_right_title }}</h2>
             <p class="cs-text">
-                {{ sbsr_right_content}}
+                {{ sbsr_right_content | safe }}
             </p>
             {% if sbsr_cta_text %}
                 <a class="cs-button-solid" aria-label="learn more about our programs" href="">{{ sbsr_cta_text }}</a>
