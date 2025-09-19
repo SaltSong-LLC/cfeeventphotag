@@ -240,9 +240,62 @@
     }
   }
 
+
+
+/*-- -------------------------- -->
+<---          Testimonial       -->
+<--- -------------------------- -*/
+
+#testimonial-1390 {
+    padding: var(--sectionPadding);
+    background-color: var(--globalBackground);
+    position: relative;
+    z-index: 1;
+}
+#testimonial-1390 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+}
+#testimonial-1390 .title-top {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 2rem;
+    margin: 0 0 2.5rem 0;
+    font-size: 1.5rem;
+}
+#testimonial-1390 .section-text {
+    color: var(--bodyTextColorWhite);
+    text-align: left;
+    font-size: 4.5rem;
+    font-weight: 700;
+}
+
+
 /*-- -------------------------- -->
 <---          6card             -->
 <--- -------------------------- -*/
+
+#services-2220 .cs-topper {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: var(--topperFontSize);
+    line-height: 1.2em;
+    margin-bottom: 0.25rem;
+}
+
+#services-2220 .cs-title {
+    color: var(--bodyTextColorWhite);
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.2em;
+    margin: 0 0 2.5rem 0;
+    padding-top: 2rem;
+    font-size: 2.6rem;
+}
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
