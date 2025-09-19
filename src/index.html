@@ -17,13 +17,36 @@ eleventyNavigation:
 <div class="main-content-container">
     <!-- Hero -->
     
-    {% set title_top = "<<<<<CFE EVENT PHOTOGRAPHY>>>>>" %}
+    {% set title_top = "CFE Event Photography" %}
     {% set title = "Las Vegas Event Photography" %}
     {% set hero_image_mobile = "/assets/images/ribbon-cutting-hero.jpg" %}
     {% set hero_image_large_format = "/assets/images/ribbon-cutting-hero.jpg" %}
-
     {% include "components/hero_centered.html" %}
 
-    
+    {% set title_top = "About CFE Photography" %}
+    {% set section_text = "At CFE Event Photography, we specialize in capturing the professional essence and dynamic energy of business events in Las Vegas." %}
+    {% include "components/testimonial.html" %}
+
+    {% set card1_title = "Ribbon Cutting" %}
+    {% set card1_image = "/assets/images/ribboncutting-1.png" %}
+    {% set card1_link = "/ribbon-cutting" %}
+    {% set card2_title = "Business Conferences" %}
+    {% set card2_image = "/assets/images/business-conferences-2.png" %}
+    {% set card2_link = "/business-conferences" %}
+    {% set card3_title = "Corporate Events" %}
+    {% set card3_image = "/assets/images/corporate-events3.png" %}
+    {% set card3_link = "/corporate-events" %}
+    {% set card4_title = "Photo Station" %}
+    {% set card4_image = "/assets/images/photo-station-4.png" %}
+    {% set card4_link = "/photo-station" %}
+    {% set card5_title = "Networking Conventions" %}
+    {% set card5_image = "/assets/images/networking-convention-5.png" %}
+    {% set card5_link = "/networking-conventions" %}
+    {% set card6_title = "Trade Shows" %}
+    {% set card6_image = "/assets/images/tradeshow-6.png" %}
+    {% set card6_link = "/trade-shows" %}
+    {% set top_title = "Event Photography" %}
+    {% set title = "Photography for all of your business events" %}
+    {% include "components/6card.html" %}
 </div>
 {% endblock %}

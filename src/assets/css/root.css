@@ -5,7 +5,7 @@
     /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
     padding: 0;
-    background-color: #010101;
+    background-color: var(--globalBackground);
     position: fixed;
     z-index: 10000;
 }
@@ -14,7 +14,7 @@
     min-width: 12.5rem;
     margin: 0;
     padding: 0;
-    background-color: #010101;
+    background-color: var(--globalBackground);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
     opacity: 0;
     border-bottom: 5px solid #ffba19;
@@ -54,7 +54,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: clamp(1.5rem, 3vw, 1.875rem) clamp(2rem, 2vw, 2.5rem) 0.5rem;
-    background-color: #010101;
+    background-color: var(--globalBackground);
     position: fixed;
     z-index: 10000;
 }
@@ -134,7 +134,7 @@
     min-width: 12.5rem;
     margin: 0;
     padding: 0;
-    background-color: #010101;
+background-color: var(--globalBackground);
     overflow: hidden;
     opacity: 0;
     border-bottom: 5px solid var(--primary);

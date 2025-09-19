@@ -7,6 +7,7 @@
     --headerColor: #1a1a1a;
     --bodyTextColor: #4e4b66;
     --bodyTextColorWhite: #fafbfc;
+    --globalBackground: #010101;
     /* 13px - 16px */
     --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
     /* 31px - 49px */
@@ -14,13 +15,14 @@
     --bodyFontSize: 1rem;
     /* 60px - 100px top and bottom */
     --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    --hero-image-large-format: url("/assets/images/ribbon-cutting-hero.jpg");
 }
 
 body {
     font-family: 'Roboto', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #010101;
+    background-color: var(--globalBackground);
     color: #ddd;
 }
 
