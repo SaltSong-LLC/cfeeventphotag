@@ -1,0 +1,111 @@
+<!-- ============================================ -->
+<!--                   Gallery                    -->
+<!-- ============================================ -->
+
+<section id="gallery-453">
+    <div class="cs-container">
+        <div class="cs-content">
+            <div class="cs-flex">
+                <span class="cs-topper">{{ gallery_topper }}</span>
+                <h2 class="cs-title">{{ gallery_title }}</h2>
+            </div>
+            <div class="cs-button-group">
+                <!--When adding extra galleries, copy and paste the button and make data-filter equal to four, then five, etc. Do the same for the corresponding gallery and it's data attribute-->
+                <button class="cs-button" data-filter="one">
+                    {{ gallery_category_1 }}
+                </button>
+                <button class="cs-button" data-filter="two">
+                    {{ gallery_category_2 }}
+                </button>
+                <button class="cs-button" data-filter="three">
+                    {{ gallery_category_3 }}
+                </button>
+            </div>
+        </div>
+        <div class="cs-wrapper">
+            <!--Gallery 1-->
+            <div class="cs-gallery" data-category="one">
+                <!--Picture 1-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_1_1 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_1_1 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_1_1 }}" alt="{{ gallery_image_1_1_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 2-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_1_2 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_1_2 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_1_2 }}" alt="{{ gallery_image_1_2_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 3-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_1_3 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_1_3 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_1_3 }}" alt="{{ gallery_image_1_3_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 4-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_1_4 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_1_4 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_1_4 }}" alt="{{ gallery_image_1_4_alt }}" width="305" height="400">
+                </picture>
+                
+            </div>
+            <!--Gallery 2-->
+            <div class="cs-gallery cs-hidden" data-category="two">
+                <!--Picture 1-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_2_1 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_2_1 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_2_1 }}" alt="{{ gallery_image_2_1_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 2-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_2_2 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_2_2 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_2_2 }}" alt="{{ gallery_image_2_2_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 3-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_2_3 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_2_3 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_2_3 }}" alt="{{ gallery_image_2_3_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 4-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_2_4 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_2_4 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_2_4 }}" alt="{{ gallery_image_2_4_alt }}" width="305" height="400">
+                </picture>
+            </div>
+            <!--Gallery 3-->
+            <div class="cs-gallery cs-hidden" data-category="three">
+                <!--Picture 1-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_3_1 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_3_1 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_3_1 }}" alt="{{ gallery_image_3_1_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 2-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_3_2 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_3_2 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_3_2 }}" alt="{{ gallery_image_3_2_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 3-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_3_3 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_3_3 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_3_3 }}" alt="{{ gallery_image_3_3_alt }}" width="305" height="400">
+                </picture>
+                <!--Picture 4-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="{{ gallery_image_3_4 }}">
+                    <source media="(min-width: 601px)" srcset="{{ gallery_image_3_4 }}">
+                    <img loading="lazy" decoding="async" src="{{ gallery_image_3_4 }}" alt="{{ gallery_image_3_4_alt }}" width="305" height="400">
+                </picture>
+            </div>
+        </div>
+    </div>
+</section>
+                                
