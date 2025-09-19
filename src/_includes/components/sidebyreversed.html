@@ -1,0 +1,26 @@
+<!-- ============================================ -->
+<!--             Side By Side Reverse             -->
+<!-- ============================================ -->
+
+<section id="sbsr-318">
+    <div class="cs-container">
+        <!-- Left Image Section -->
+        <picture class="cs-picture">
+            <source media="(max-width: 600px)" srcset="{{ sbsr_left_image }}">
+            <source media="(min-width: 601px)" srcset="{{ sbsr_left_image }}">
+            <img loading="lazy" decoding="async" src="{{ sbsr_left_image }}" alt="consult" width="520" height="680" aria-hidden="true">
+        </picture>
+        <!-- Right Content Section-->
+        <div class="cs-content">
+            <span class="cs-topper">{{ sbsr_right_topper }}</span>
+            <h2 class="cs-title">{{ sbsr_right_title }}</h2>
+            <p class="cs-text">
+                {{ sbsr_right_content}}
+            </p>
+            {% if sbsr_cta_text %}
+                <a class="cs-button-solid" aria-label="learn more about our programs" href="">{{ sbsr_cta_text }}</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+                                
