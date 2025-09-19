@@ -55,48 +55,26 @@
                                     {% endfor %}
 
                                     {# Render the <button> with the active class, dropdown icon and child links #}
-                                    <button
-                                        class="menu-link dropdown-toggle{{ activeClass }}"
-                                        aria-expanded="false"
-                                        aria-haspopup="menu"
-                                        id="{{ entry.key }}-dropdown-toggle"
-                                    >
+                                    <button class="menu-link dropdown-toggle{{ activeClass }}" aria-expanded="false" aria-haspopup="menu" id="{{ entry.key }}-dropdown-toggle" >
                                         
                                         <a href="{{ entry.url }}" class="menu-link{{ activeClass }}">{{ entry.key }}
-                                        <img
-                                            class="dropdown-icon"
-                                            src="/assets/images/chevron-dropdown.svg"
-                                            alt="dropdown icon"
-                                            width="15"
-                                            height="15"
-                                            decoding="async"
-                                            aria-hidden="true"
-                                        /></a>
+                                            <img class="dropdown-icon" src="/assets/images/chevron-dropdown.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true" />
+                                        </a>
                                     </button>
 
                                     {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
-                                    <ul
-                                        class="dropdown-ul"
-                                        aria-labelledby="dropdown-{{ entry.key }}"
-                                    >
+                                    <ul class="dropdown-ul" aria-labelledby="dropdown-{{ entry.key }}">
                                         {% for child in entry.children %}
                                             <li class="dropdown-li">
-                                                <a
-                                                    href="{{ child.url }}"
-                                                    class="menu-link dropdown-link {% if child.url == page.url %}active{% endif %}"
-                                                    aria-label="{{ child.key }}"
-                                                    >{{ child.key }}</a
-                                                >
+                                                <a href="{{ child.url }}" class="menu-link dropdown-link {% if child.url == page.url %}active{% endif %}" aria-label="{{ child.key }}">
+                                                    {{ child.key }}
+                                                </a>
                                             </li>
                                         {% endfor %}
                                     </ul>
                                 {% else %}
                                     {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
-                                    <a
-                                        href="{{ entry.url }}"
-                                        class="menu-link {% if isActive %}active{% endif %}"
-                                        {% if entry.url == page.url %}aria-current="page"{% endif %}
-                                    >
+                                    <a href="{{ entry.url }}" class="menu-link {% if isActive %}active{% endif %}" {% if entry.url == page.url %}aria-current="page"{% endif %}>
                                         {{ entry.key }}
                                     </a>
                                 {% endif %}
@@ -112,98 +90,6 @@
             </div>
     </div>
     </div>
-    <script>
- 
-    const url = window.location.href;
-       const segments = url.split('/').filter(Boolean); // Split and remove any empty segments
-       let id = null;
-       
-       // Iterate from the end of the segments array
-       for (let i = segments.length - 1; i >= 0; i--) {
-           if (!isNaN(segments[i])) { // Check if the segment is a number
-               id = segments[i];
-               break; // Break the loop once the number is found
-           }
-       }
-       
-       // Use the id if it's found
-       if (id) {
-           const input = document.querySelector('#page-header .input');
-           input.value = id;
-           input.disabled = true;
-       }
-       
-               document.getElementById('page-header').addEventListener('submit', function(e) {
-                   e.preventDefault();
-        
-       
-       
-       // Disable inputs and button
-       let inputs = this.querySelectorAll('input, textarea');
-           inputs.forEach(input => input.disabled = true);
-        
-       const submitButton = document.getElementById('submit-report');
-       submitButton.disabled = true;
-       submitButton.textContent = 'Working on your request...';
-       
-       let id = document.getElementById('page-header').value;
-       let message = document.getElementById('message-1442').value;
-       var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-       
-       fetch('/app/submit-error-report', {
-           method: 'POST',
-           headers: {
-               'Content-Type': 'application/json',
-               'X-CSRF-TOKEN': csrfToken
-           },
-           body: JSON.stringify({ name: id, message: message })
-       })
-       .then(response => response.json())
-       .then(data => {
-           if(data.success) {
-               // Clear form and show success message
-               this.reset();
-               let successMessage = '<p style="margin: 0 auto;font-weight: bold;">Report submitted successfully!</p>';
-               document.getElementById('submit-report').insertAdjacentHTML('beforebegin', successMessage);
-               submitButton.textContent = 'Submit Report';
-       
-               setTimeout(function() {
-            
-                   var div = document.querySelector('.cs-report-form');
-                   div.classList.remove('cs-open');
-            
-                   }, 1000);
-       
-           } else {
-               // Handle error
-               let errorMessage = '<p style="margin: 0 auto;font-weight: bold;>Error: ' + data.error + '</p>';
-               document.getElementById('submit-report').insertAdjacentHTML('beforebegin', errorMessage);
-               inputs.forEach(input => input.disabled = false); // Re-enable inputs
-               submitButton.textContent = 'Submit Report';
-       
-           }
-       });
-       });
-          
-             
-               // Add "cs-open" class when "cs-report-button" is clicked
-               document.querySelector('.cs-report-button').addEventListener('click', function() {
-                   var div = document.querySelector('.cs-report-form');
-                   div.classList.add('cs-open');
-               });
-           
-               // Remove "cs-open" class when "closeReport" button is clicked
-               document.querySelector('.closeReport').addEventListener('click', function() {
-                    
-                   var div = document.querySelector('.cs-report-form');
-                   div.classList.remove('cs-open');
-               });
-       
-               // Remove "cs-open" class when "#submit-report" button is clicked
-               // document.querySelector('#submit-report').addEventListener('click', function() {
-               //     var div = document.querySelector('.cs-report-form');
-               //     div.classList.remove('cs-open');
-               // });
-           </script>
+    
 </header>
 
