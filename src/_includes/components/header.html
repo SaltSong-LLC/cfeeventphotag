@@ -7,96 +7,203 @@
 
 <header id="page-header">
     <div class="container">
-        <nav class="navbar" aria-label="main navigation">
-            <div class="navbar-menu">
-                <ul class="navbar-menu-list">
-                    {% set navPages = collections.all | eleventyNavigation %}
+        <div class="top">
+            <nav class="navbar" aria-label="main navigation">
+                <button class="toggle" aria-label="mobile menu toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-haspopup="menu">
+                    <span class="box" aria-hidden="true">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </span>
+                </button>
+                <div class="ul-wrapper">
+                    <ul class="menu-list">
+                        {% set navPages = collections.all | eleventyNavigation %}
 
-                    {# Loop through all pages with a eleventyNavigation in the frontmatter #}
-                    {% for entry in navPages %}
+                        {# Loop through all pages with a eleventyNavigation in the frontmatter #}
+                        {% for entry in navPages %}
 
-                        {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
-                        {% set hasChild = entry.children.length %}
+                            {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+                            {% set hasChild = entry.children.length %}
+                            {% set isActive = entry.url == page.url %}
 
-                        {# Check the frontmatter for hideOnMobile/hideOnDesktop. Form a list of classes to be joined when the item is rendered #}
-                        {% set hideClasses = [] %}
-                        {% if entry.hideOnMobile %}
-                            {% set hideClasses = (hideClasses.push("cs-hide-on-mobile"), hideClasses) %}
-                        {% endif %}
-                        {% if entry.hideOnDesktop %}
-                            {% set hideClasses = (hideClasses.push("cs-hide-on-desktop"), hideClasses) %}
-                        {% endif %}
-
-                        {# If this page is a dropdown, give it the appropriate classes, icons and accessibility attributes #}
-                        <li
-                            class="navbar-menu-list-item {% if hasChild %}navbar-menu-list-item-dropdown{% endif %} {{ hideClasses | join(" ") }}"
-                        >
-                            {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
-                            {% if hasChild %}
-
-                                {# Check to see if the user's current page is one of the child pages. If so, apply the cs-active class to the dropdown parent #}
-                                {% set activeClass = "" %}
-                                {% for child in entry.children %}
-                                    {% if child.url == page.url %}
-                                        {% set activeClass = "cs-active" %}
-                                    {% endif %}
-                                {% endfor %}
-
-                                {# Render the <button> with the active class, dropdown icon and child links #}
-                                <button
-                                    class="navbar-menu-list-item-link navbar-menu-list-item-dropdown-toggle {{ activeClass }}"
-                                    aria-expanded="false"
-                                    aria-haspopup="menu"
-                                    aria-controls="dropdown-{{ entry.key }}"
-                                    aria-label="dropdown-{{ entry.key }}"
-                                    id="dropdown-{{ entry.key }}"
-                                >
-                                    {{ entry.key }}
-                                    <img
-                                        class="navbar-menu-list-item-dropdown-icon"
-                                        src="/assets/images/chevron-dropdown.svg"
-                                        alt="dropdown icon"
-                                        width="15"
-                                        height="15"
-                                        decoding="async"
-                                        aria-hidden="true"
-                                    />
-                                </button>
-
-                                {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
-                                <ul
-                                    class="navbar-menu-list-item-dropdown-ul"
-                                    id="dropdown-{{ entry.key }}"
-                                >
-                                    {% for child in entry.children %}
-                                        <li class="navbar-menu-list-item-dropdown-li">
-                                            <a
-                                                href="{{ child.url }}"
-                                                class="navbar-menu-list-item-link navbar-menu-list-item-dropdown-link"
-                                                >{{ child.key }}</a
-                                            >
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% else %}
-                                {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
-                                <a
-                                    href="{{ entry.url }}"
-                                    class="navbar-menu-list-item-link {% if entry.url == page.url %}navbar-menu-list-item-active{% endif %}"
-                                    {% if entry.url == page.url %}aria-current="page"{% endif %}
-                                >
-                                    {{ entry.key }}
-                                </a>
+                            {# Check the frontmatter for hideOnMobile/hideOnDesktop. Form a list of classes to be joined when the item is rendered #}
+                            {% set hideClasses = [] %}
+                            {% if entry.hideOnMobile %}
+                                {% set hideClasses = (hideClasses.push("hide-on-mobile"), hideClasses) %}
                             {% endif %}
-                        </li>
-                    {% endfor %}
-            </div>
-            <div class="navbar-brand">
-                <a href="/" class="navbar-logo">
+                            {% if entry.hideOnDesktop %}
+                                {% set hideClasses = (hideClasses.push("hide-on-desktop"), hideClasses) %}
+                            {% endif %}
+
+                            {# If this page is a dropdown, give it the appropriate classes, icons and accessibility attributes #}
+                            <li
+                                class="menu-item {% if hasChild %}menu-item-dropdown{% endif %} {{ hideClasses | join(" ") }}"
+                            >
+                                {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
+                                {% if hasChild %}
+
+                                    {# Check to see if the user's current page is one of the child pages. If so, apply the cs-active class to the dropdown parent #}
+                                    {% set activeClass = "" %}
+                                    {% for child in entry.children %}
+                                        {% if child.url == page.url %}
+                                            {% set activeClass = " active" %}
+                                        {% endif %}
+                                        {% if isActive %}
+                                            {% set activeClass = "active" %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {# Render the <button> with the active class, dropdown icon and child links #}
+                                    <button
+                                        class="menu-link dropdown-toggle{{ activeClass }}"
+                                        aria-expanded="false"
+                                        aria-haspopup="menu"
+                                        id="{{ entry.key }}-dropdown-toggle"
+                                    >
+                                        
+                                        <a href="{{ entry.url }}" class="menu-link{{ activeClass }}">{{ entry.key }}
+                                        <img
+                                            class="dropdown-icon"
+                                            src="/assets/images/chevron-dropdown.svg"
+                                            alt="dropdown icon"
+                                            width="15"
+                                            height="15"
+                                            decoding="async"
+                                            aria-hidden="true"
+                                        /></a>
+                                    </button>
+
+                                    {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
+                                    <ul
+                                        class="dropdown-ul"
+                                        aria-labelledby="dropdown-{{ entry.key }}"
+                                    >
+                                        {% for child in entry.children %}
+                                            <li class="dropdown-li">
+                                                <a
+                                                    href="{{ child.url }}"
+                                                    class="menu-link dropdown-link {% if child.url == page.url %}active{% endif %}"
+                                                    aria-label="{{ child.key }}"
+                                                    >{{ child.key }}</a
+                                                >
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                                    <a
+                                        href="{{ entry.url }}"
+                                        class="menu-link {% if isActive %}active{% endif %}"
+                                        {% if entry.url == page.url %}aria-current="page"{% endif %}
+                                    >
+                                        {{ entry.key }}
+                                    </a>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+            <div class="brand">
+                <a href="/" class="logo">
                     <img src="{{ logo }}" alt="{{ logo_alt }}">
                 </a>
             </div>
-        </nav>
     </div>
-
+    </div>
+    <script>
+ 
+    const url = window.location.href;
+       const segments = url.split('/').filter(Boolean); // Split and remove any empty segments
+       let id = null;
+       
+       // Iterate from the end of the segments array
+       for (let i = segments.length - 1; i >= 0; i--) {
+           if (!isNaN(segments[i])) { // Check if the segment is a number
+               id = segments[i];
+               break; // Break the loop once the number is found
+           }
+       }
+       
+       // Use the id if it's found
+       if (id) {
+           const input = document.querySelector('#page-header .input');
+           input.value = id;
+           input.disabled = true;
+       }
+       
+               document.getElementById('page-header').addEventListener('submit', function(e) {
+                   e.preventDefault();
+        
+       
+       
+       // Disable inputs and button
+       let inputs = this.querySelectorAll('input, textarea');
+           inputs.forEach(input => input.disabled = true);
+        
+       const submitButton = document.getElementById('submit-report');
+       submitButton.disabled = true;
+       submitButton.textContent = 'Working on your request...';
+       
+       let id = document.getElementById('page-header').value;
+       let message = document.getElementById('message-1442').value;
+       var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+       
+       fetch('/app/submit-error-report', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json',
+               'X-CSRF-TOKEN': csrfToken
+           },
+           body: JSON.stringify({ name: id, message: message })
+       })
+       .then(response => response.json())
+       .then(data => {
+           if(data.success) {
+               // Clear form and show success message
+               this.reset();
+               let successMessage = '<p style="margin: 0 auto;font-weight: bold;">Report submitted successfully!</p>';
+               document.getElementById('submit-report').insertAdjacentHTML('beforebegin', successMessage);
+               submitButton.textContent = 'Submit Report';
+       
+               setTimeout(function() {
+            
+                   var div = document.querySelector('.cs-report-form');
+                   div.classList.remove('cs-open');
+            
+                   }, 1000);
+       
+           } else {
+               // Handle error
+               let errorMessage = '<p style="margin: 0 auto;font-weight: bold;>Error: ' + data.error + '</p>';
+               document.getElementById('submit-report').insertAdjacentHTML('beforebegin', errorMessage);
+               inputs.forEach(input => input.disabled = false); // Re-enable inputs
+               submitButton.textContent = 'Submit Report';
+       
+           }
+       });
+       });
+          
+             
+               // Add "cs-open" class when "cs-report-button" is clicked
+               document.querySelector('.cs-report-button').addEventListener('click', function() {
+                   var div = document.querySelector('.cs-report-form');
+                   div.classList.add('cs-open');
+               });
+           
+               // Remove "cs-open" class when "closeReport" button is clicked
+               document.querySelector('.closeReport').addEventListener('click', function() {
+                    
+                   var div = document.querySelector('.cs-report-form');
+                   div.classList.remove('cs-open');
+               });
+       
+               // Remove "cs-open" class when "#submit-report" button is clicked
+               // document.querySelector('#submit-report').addEventListener('click', function() {
+               //     var div = document.querySelector('.cs-report-form');
+               //     div.classList.remove('cs-open');
+               // });
+           </script>
+</header>
 
