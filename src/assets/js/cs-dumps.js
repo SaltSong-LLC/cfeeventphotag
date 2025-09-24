@@ -16,6 +16,9 @@ class CS_GalleryFilter {
 	}
 
 	onClick($filter) {
+		if ($filter == undefined) {
+			return;
+		}
 		this.filter($filter.dataset.filter);
 
 		const { activeClass } = this;
