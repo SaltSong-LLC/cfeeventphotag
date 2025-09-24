@@ -14,7 +14,7 @@
                         <source media="(max-width: 600px)" srcset="{{ card1_image }}">
                         <!--Tablet and above Image-->
                         <source media="(min-width: 601px)" srcset="{{ card1_image }}">
-                        <img loading="lazy" decoding="async" src="{{ card1_image }}" alt="person" width="352" height="440">
+                        <img loading="lazy" decoding="async" src="{{ card1_image }}" {% if card1_alt %} alt="{{ card1_alt }}" {% endif %} width="352" height="440">
                     </picture>
                 </a>
             </li>
@@ -27,7 +27,7 @@
                         <source media="(max-width: 600px)" srcset="{{ card2_image }}">
                         <!--Tablet and above Image-->
                         <source media="(min-width: 601px)" srcset="{{ card2_image }}">
-                        <img loading="lazy" decoding="async" src="{{ card2_image }}" alt="person" width="352" height="440">
+                        <img loading="lazy" decoding="async" src="{{ card2_image }}" {% if card2_alt %} alt="{{ card2_alt }}" {% endif %} width="352" height="440">
                     </picture>
                 </a>
             </li>
@@ -40,7 +40,7 @@
                         <source media="(max-width: 600px)" srcset="{{ card3_image }}">
                         <!--Tablet and above Image-->
                         <source media="(min-width: 601px)" srcset="{{ card3_image }}">
-                        <img loading="lazy" decoding="async" src="{{ card3_image }}" alt="person" width="352" height="440">
+                        <img loading="lazy" decoding="async" src="{{ card3_image }}" {% if card3_alt %} alt="{{ card3_alt }}" {% endif %} width="352" height="440">
                     </picture>
                 </a>
             </li>
@@ -57,7 +57,7 @@
                         <source media="(max-width: 600px)" srcset="{{ card4_image }}">
                         <!--Tablet and above Image-->
                         <source media="(min-width: 601px)" srcset="{{ card4_image }}">
-                        <img loading="lazy" decoding="async" src="{{ card4_image }}" alt="person" width="352" height="440">
+                        <img loading="lazy" decoding="async" src="{{ card4_image }}" {% if card4_alt %} alt="{{ card4_alt }}" {% endif %} width="352" height="440">
                     </picture>
                 </a>
             </li>
@@ -70,7 +70,7 @@
                         <source media="(max-width: 600px)" srcset="{{ card5_image }}">
                         <!--Tablet and above Image-->
                         <source media="(min-width: 601px)" srcset="{{ card5_image }}">
-                        <img loading="lazy" decoding="async" src="{{ card5_image }}" alt="person" width="352" height="440">
+                        <img loading="lazy" decoding="async" src="{{ card5_image }}" {% if card5_alt %} alt="{{ card5_alt }}" {% endif %} width="352" height="440">
                     </picture>
                 </a>
             </li>
@@ -83,7 +83,7 @@
                         <source media="(max-width: 600px)" srcset="{{ card6_image }}">
                         <!--Tablet and above Image-->
                         <source media="(min-width: 601px)" srcset="{{ card6_image }}">
-                        <img loading="lazy" decoding="async" src="{{ card6_image }}" alt="person" width="352" height="440">
+                        <img loading="lazy" decoding="async" src="{{ card6_image }}" {% if card6_alt %} alt="{{ card6_alt }}" {% endif %} width="352" height="440">
                     </picture>
                 </a>
             </li>
