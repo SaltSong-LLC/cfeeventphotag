@@ -38,9 +38,9 @@
     </div>
 
     <!-- Background Image -->
-    <picture class="cs-background" <% if hero_image_alt %> alt="{{ hero_image_alt }}" <% endif %>>
+    <picture class="cs-background" {% if hero_image_alt %} alt="{{ hero_image_alt }}" {% endif %}>
         <source media="(max-width: 600px)" srcset="{{ hero_image_mobile }}">
         <source media="(min-width: 601px)" srcset="{{ hero_image_large_format }}">
-        <img loading="lazy" decoding="async" src="{{ hero_image_large_format }}" alt="meeting" width="1920" height="1200" aria-hidden="true">
+        <img loading="lazy" decoding="async" src="{{ hero_image_large_format }}" {% if hero_image_alt %} alt="{{ hero_image_alt }}" {% endif %} width="1920" height="1200" aria-hidden="true">
     </picture>
 </section>
