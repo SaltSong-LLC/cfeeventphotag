@@ -697,6 +697,7 @@
         justify-content: center;
         /* 77px - 160px */
         gap: clamp(4.8125rem, 11vw, 10rem);
+        align-items: flex-start;
     }
     #sbsr-318 .cs-content {
         text-align: left;
